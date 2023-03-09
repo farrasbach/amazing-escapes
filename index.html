@@ -6,19 +6,237 @@
     <title>Amazing Escapes</title>
     <link rel="shortcut icon" type="x-icon" href="assets/AEicondone.png">
     <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
  </head>
  <body>
    <header class="header-main">
      <div class="header-main-logo">
-      <img src="assets/AEblk.png" alt="Amazing Escapes Logo"/>
+       <a href="#"><img src="assets/AEblk.png" alt="Amazing Escapes Logo"/></a>
      </div>
       <nav>
-        <button class="nav-link">Home</button>
-        <button class="nav-link">Our Package</button>
-        <button class="nav-link">Call Us</button>
+        <a href="index.html"><button class="nav-link">Home</button></a>
+        <a href="#our-package"><button class="nav-link">Our Package</button></a>
+        <a href="#call-us"><button class="nav-link">Call Us</button></a>
       </nav>
+    </header>
+   <section class="slogan">
+      <h1>Your Ultimate Travel Partner with Amazing Escapes</h1>
+      <p>Travel in style, escape with elegance</p>
+   </section>
+   <div class="hero">
+      <div class="quote">
+        <a target="_blank" href="https://www.freepik.com/free-photo/beautiful-girl-standing-viewpoint-koh-nangyuan-island-near-koh-tao-island-surat-thani-thailand_13249972.htm#query=travelling&position=16&from_view=search&track=sph"><img class="quote-img" src="assets/travelpic.jpg"></a>
+        <p>"Traveling with Amazing Escapes took me to breathtaking places beyond my expectations."</p>
+        <div class="quote-profile">
+          <a target="_blank" href="https://www.flaticon.com/free-icons/user">
+            <img class="quote-profilepic" src="assets/woman.png">
+          </a>
+          <h1>Mia Toretto<br><i>Student, 22</i></h1>
+        </div>
+      </div>
+      <div class="quote">
+        <a target="_blank" href="https://www.freepik.com/free-photo/couple-family-traveling-together_3976699.htm#query=traveling&position=3&from_view=search&track=sph">
+          <img class="quote-img" src="assets/couplepic.jpg">
+        </a>         
+        <p>"Exploring the stunning landscapes of Iceland was like being on another planet, every moment was a wonder to behold."</p>
+        <div class="quote-profile">
+          <a target="_blank" href="https://www.flaticon.com/free-icons/user">
+            <img class="quote-profilepic" src="assets/man.png">
+          </a>
+          <h1>Lucas Hobbs<br><i>YouTuber, 33</i></h1>
+        </div>
+      </div>
+      <div class="quote">
+        <a target="_blank" href="https://www.freepik.com/free-photo/tourist-from-mountain-top-sun-rays-man-wear-big-backpack-against-sun-light_4351576.htm#query=traveling&position=35&from_view=search&track=sph"> 
+          <img class="quote-img" src="assets/solotraveler.jpg">
+        </a>         
+        <p>"The tropical paradise of Bali was pure magic. The lush greenery made for an unforgettable and relaxing getaway."</p>
+        <div class="quote-profile">
+          <a target="_blank" href="https://www.flaticon.com/free-icons/user">
+            <img class="quote-profilepic" src="assets/man.png">
+          </a>
+          <h1>Brian O'Connor<br><i>Traveler, 30</i></h1>
+        </div>
+        <script>
+          var slideIndex = 0;
+          showSlides();
         
-   </header>
-    <h1 style=color:#143165><b>Hi, Selamat Datang</b></h1>
+          function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("quote");
+            for (i = 0; i < slides.length; i++) {
+              slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {
+              slideIndex = 1
+            }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 4000);
+          }
+        </script>
+      </div>
+      <form id="form" action="/">
+          <h1>Contact Us</h1>
+          <p>Our team will contact you after we receive the data</p>
+          <div class="input-control">
+              <label for="firstname">First Name:</label>
+              <input id="firstname" name="firstname" type="text" placeholder="Your first name...">
+              <div class="error"></div>
+          </div>
+          <div class="input-control">
+              <label for="lastname">Last Name:</label>
+              <input id="lastname" name="lastname" type="text" placeholder="Your last name...">
+              <div class="error"></div>
+          </div>
+          <div class="input-control">
+            <label for="email">Email Address:</label>
+            <input id="email" name="email" type="text" placeholder="Your email...">
+            <div class="error"></div>
+          </div>
+              
+          <button type="submit">SEND</button>
+      </form>
+      <script>
+        const form = document.getElementById('form');
+        const firstname = document.getElementById('firstname');
+        const lastname = document.getElementById('lastname');
+        const email = document.getElementById('email');
+
+
+        form.addEventListener('submit', e => {
+        e.preventDefault();
+
+        validateInputs();
+        });
+
+        const setError = (element, message) => {
+        const inputControl = element.parentElement;
+        const errorDisplay = inputControl.querySelector('.error');
+
+        errorDisplay.innerText = message;
+        inputControl.classList.add('error');
+        inputControl.classList.remove('success')
+        }
+
+        const setSuccess = element => {
+        const inputControl = element.parentElement;
+        const errorDisplay = inputControl.querySelector('.error');
+
+        errorDisplay.innerText = '';
+        inputControl.classList.add('success');
+        inputControl.classList.remove('error');
+        };
+
+        const isValidEmail = email => {
+        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+        }
+
+        const validateInputs = () => {
+        const firstnameValue = firstname.value.trim();
+        const lastnameValue = lastname.value.trim();
+        const emailValue = email.value.trim();
+    
+
+        if(firstnameValue === '') {
+         setError(firstname, 'First name is required');
+        } else {
+          setSuccess(firstname);
+        }
+    
+        if(lastnameValue === '') {
+          setError(lastname, 'Last name is required');
+        } else {
+          setSuccess(lastname);
+        }
+
+        if(emailValue === '') {
+          setError(email, 'Email is required');
+        } else if (!isValidEmail(emailValue)) {
+          setError(email, 'Please enter a valid email address');
+        } else {
+          setSuccess(email);
+        }
+
+        };
+      </script>
+  </div>
+  <div class="our-feature">
+    <div class="feature">
+      <h1>3 more reasons to go with us</h1>
+      <p>Find out more on how we can help you book without a worry</p>
+      <div class="feature-list">
+        <a target="_blank" href="https://icons8.com/icon/">
+          <img width="40px" src="assets/shield.png">
+        </a>
+        <div class="feature-list-p">Total protection<br><i>Insure your trip, even in case of Covid-19</i></div>
+      </div>
+      <div class="feature-list">
+        <a target="_blank" href="https://icons8.com/icon/">
+          <img width="45px" src="assets/flight.png">
+        </a>
+        <div class="feature-list-p">Full-Flex<br><i>The freedom to cancel your flight whenever you want</i></div>
+      </div>
+      <div class="feature-list">
+        <a target="_blank" href="https://icons8.com/icon/">
+          <img width="45px" src="assets/chat.png">
+        </a>
+        <div class="feature-list-p">Call and book<br><i>Chat to our agents and find your perfect holiday</i></div>
+      </div>
+    </div>
+  </div>
+  <div id="our-package">
+      <h1>Our Packages</h1>
+  </div>
+  <div class="packages">
+    <a href="#"><div class="packages-list"><img width="300" height="200px" src="https://www.insightvacations.com/media/todhzhaf/peru-machu-picchu-nazca-lines-guided-tour-11.jpg">
+      <h1>Peru</h1>
+      <p>Experience the wonders of Peru with majestic Andes mountains, ancient ruins of Machu Picchu, mouth-watering cuisine, and rich cultural heritage.</p>
+    </div></a>
+    <a href="#"><div class="packages-list"><img width="300" height="200px" src="https://imageio.forbes.com/specials-images/imageserve/675172642/pura-ulun-danu-bratan-temple-in-Bali-/960x0.jpg?format=jpg&width=960">
+      <h1>Bali</h1>
+      <p>Escape to Bali's beaches, jungles, and rice terraces to indulge in world-class spas, surf, and immerse in Balinese culture.</p>
+    </div></a>
+    <a href="#"><div class="packages-list"><img width="300" height="200px" src="https://www.travelandleisure.com/thmb/QK4CuWpFdm2dR3NDznbBQtsAoN0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/northern-lights-kirkjufell-mountain-snaefellsnes-iceland-ICELANDLIGHTS1218-824f48715748425f828f05aa2a28dfe0.jpg">
+      <h1>Iceland</h1>
+      <p>Embark on an otherworldly adventure in Iceland with glaciers, waterfalls, Northern Lights, and world-class cuisine.</p>
+    </div></a>
+    <a href="#"><div class="packages-list"><img width="300" height="200px" src="https://planetofhotels.com/guide/sites/default/files/styles/paragraph__live_banner__lb_image__1880bp/public/live_banner/Seoul-2.jpg">
+      <h1>Seoul</h1>
+      <p>Discover the vibrant and dynamic Seoul with ancient palaces, street food, fashion, and traditional and modern Korean culture.</p>
+    </div></a>
+    <a href="#"><div class="packages-list"><img width="300" height="200px" src="https://www.state.gov/wp-content/uploads/2019/04/Japan-2107x1406.jpg">
+      <h1>Japan</h1>
+      <p>Experience ancient tradition and modern innovation in Japan with historic temples, cherry blossoms, delicious cuisine, and high-tech Tokyo.</p>
+    </div></a>
+    <a href="#"><div class="packages-list"><img width="300" height="200px" src="https://img.okezone.com/content/2022/06/10/408/2609462/5-keuntungan-tinggal-di-swiss-destinasi-impian-pelancong-dunia-BVbt4GTRwB.jpg">
+      <h1>Switzerland</h1>
+      <p>Escape to pristine Switzerland for skiing, hiking, luxurious spas and hotels, and world-renowned chocolate and cheese.</p>
+    </div></a>
+  </div>
+  <section class="closing">
+    <h1>Escape the Ordinary: Experience the Ultimate Journey of a Lifetime with Amazing Escapes</h1>
+    <p>With our extensive knowledge of the world's most stunning destinations and our dedication to providing unparalleled customer service, we are committed to making your travel dreams a reality. Let us help you escape the ordinary and embark on a journey of a lifetime. Book your next Amazing Escape today!
+    </p>
+    <button id="call-us">Book your dream vacation with us today!</button>
+  </section>
+  <footer>
+    <p>Created by : farrasbach</p>
+    <div class="socmed">
+      <p>Our social media :</p>
+      <a target="_blank" href="https://instagram.com/"><img width="20px"src="assets/instagram.png"></a>
+      <a target="_blank" href="https://twitter.com/"><img width="20px"src="assets/twitter.png"></a>
+      <a target="_blank" href="https://facebook.com/"><img width="20px"src="assets/facebook.png"></a>
+    </div>
+    <div class="appreciation">
+      <p>Thanks to </p>
+      <a target="_blank" href="https://revou.co/"><img height="40px" width="100%" src="assets/revoulogo.png"></a>
+    </div>
+    
+  </footer>
+
  </body>
 </html>
